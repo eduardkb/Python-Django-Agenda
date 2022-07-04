@@ -1,0 +1,20 @@
+{% extends 'contatos/index.html' %}
+
+{% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
+
+{% block testeDeBloco %}
+        <br>
+        <p style="color:lightgray;text-align:center;">
+            Texto dento de bloco separado.
+            <br>
+            Pessoas encontradas
+        </p>
+    <!--
+        EXEMPLOS DE FORMATAÇAO DE CSS EM LINHA
+
+        <br>
+        <h1 style="color:lightgray;text-align:center;">Teste de bloco na pagina de Busca</h1>
+        <br>
+        <p style="color:red;">Pessoas Encontradas</p>
+    -->
+{% endblock %}

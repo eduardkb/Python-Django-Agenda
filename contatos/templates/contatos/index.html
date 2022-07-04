@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+  {% block testeDeBloco %}
+  {% endblock %}
+
+  <!-- CAMPO DE PESQUISA  -->
+  <br>
+  <form method="get" action="{% url 'busca' %}">
+    <div class="form-group row">
+      <div class="col-12">
+        <input class="form-control"
+                type="search" value="{{ request.GET.termo }}"
+                id="search-input"
+                placeholder="Digite sua pesquisa"
+                name="termo">
+
+        {% include 'parciais/_messages.html' %}
+      </div>
+    </div>
+  </form>
+
+  <h1 class="mt-5">Minha agenda</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Telefone</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contato in contatos %}
+        {% if contato.mostrar %}
+          <tr>
+            <td> {{ contato.id }} </td>
+            <td>
+              <!--
+                  a url do contato aponta para 'ver_contato
+                  e como argumento passa o contato.id
+              -->
+              <a href="{% url 'ver_contato' contato.id %} "> {{ contato.nome }} </a>
+            </td>
+            <td> {{ contato.sobrenome }} </td>
+            <td> {{ contato.telefone }} </td>
+            <td> {{ contato.categoria }} </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  <!-- CÓDIGO DO PAGINADOR -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <!--
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      -->
+
+      {% for pagina in contatos.paginator.page_range %}
+        {% if contatos.number == pagina %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      <!--
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      -->
+    </ul>
+  </nav>
+
+{% endblock %}

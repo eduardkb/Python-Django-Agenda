@@ -1,0 +1,15 @@
+<!-- MOSTRA UMA MENSAGEM -->
+{% if messages %}
+    <br>
+    {% for message in messages %}
+        <!-- MENSAGEM DIRETO NA PAGINA PODE SER ESCITA COMO:
+        {{ message }} {{ message.tags }}
+        -->
+
+        <!-- OU PODE SER DINAMICO COM O CODIGO ABAIXO:-->
+        <div class="alert {{ message.tags }}" role="alert">
+        {{ message }}
+        </div>
+
+    {% endfor %}
+{% endif %}
