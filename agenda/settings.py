@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-u-+3$i@cx7_ftg%y=ylatpt&z@f)2l#)gai31fz3-kf-*t!zha
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'eduardkb.freeddns.org']
-
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['127.0.0.1', 'dev.eduardkb.website']
 
 # Application definition
 
