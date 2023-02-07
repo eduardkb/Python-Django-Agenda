@@ -19,3 +19,6 @@
 		python manage.py runserver
 		or
 		python manage.py runserver 0.0.0.0:3000
+
+## Website User
+	- john:john123456
